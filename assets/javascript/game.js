@@ -41,8 +41,6 @@ function startGame(event) {
 	document.getElementById('wins').innerHTML = wins;
 	// Losses
 	document.getElementById('losses').innerHTML = losses;
-
-	console.log(wordSplit)
 };
 
 function checkLetter(letter) {
@@ -55,16 +53,12 @@ function checkLetter(letter) {
 		alert('That is not a letter');
 		return;
 	};
-
 	if (wrongGuesses.indexOf(letterGuessed) !== -1) {
 	alert('You already guessed that letter')
-	}
-		
-		else {
-			wrongGuesses.push(letterGuessed);
-			guessWord();
-		};
-
+	} else {
+		wrongGuesses.push(letterGuessed);
+		guessWord();
+	};
 
 	function guessWord(letter) {
 	// check to see if in word
@@ -73,14 +67,11 @@ function checkLetter(letter) {
 			document.getElementById('wrongGuesses').innerHTML = wrongGuesses;
 			guessesLeft--;
 			document.getElementById('guessesLeft').innerHTML = guessesLeft;
-			}
-
-			else {
-				letterInWord = true;
-			};
+		} else {
+			letterInWord = true;
+		};
 		if (letterInWord = true) {
 				// document.getElementById('wrongGuesses').innerHTML = wrongGuesses;
-
 			for (var i = 0; i < wordSplit.length; i++) {
 				if (wordSplit[i] === letterGuessed) {
 					gamehud[i] = letterGuessed;
@@ -95,7 +86,6 @@ function checkLetter(letter) {
 };
 
 function checkWin(event) {
-
 	if (guessesLeft === 0) {
 		alert('You lose. Your defeat will be etched in the annals of history and your great, great, great, grandchildren will be ashamed of your existence until you are inevitably forgotten.');
 		losses++;
@@ -106,14 +96,12 @@ function checkWin(event) {
 
 		if (playAgain == true) {
 			startGame();
-		}
-		else {
+		}	else {
 			alert("Fine, I don't want you playing my game anyway. I put a lot of work into this you know. I honestly hope your butt falls off.")
 			console.log(losses)
 			document.getElementById('losses');
 		};
 	};
-
 	if (lettersRemaining === 0) {
 		wins++;
 		document.getElementById('wins').innerHTML=wins;
@@ -122,24 +110,21 @@ function checkWin(event) {
 
 		if (playAgain == true) {
 			startGame();
-		}
-		
-		else {
+		} else {
 			alert("Fine, I don't want you playing my game anyway. I put a lot of work into this you know. I honestly hope your butt falls off.")
 			document.getElementById('wins');
-			console.log(wins)
+			console.log(wins);
 		};
 	};
 };
 
 function playGame (event) {
-		checkLetter();
-		checkWin();
-	};
+	checkLetter();
+	checkWin();
+};
 
 startGame();
 document.onkeyup = function (event) {
-		var letterGuessed = String.fromCharCode(event.keyCode).toUpperCase();
-
-		playGame();
+	var letterGuessed = String.fromCharCode(event.keyCode).toUpperCase();
+	playGame();
 };
